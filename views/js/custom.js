@@ -41,7 +41,7 @@ Index Of Script
 Index Of Script
 ----------------------------------------------*/
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     /*------------------------
     Page Loader
@@ -55,7 +55,7 @@ $(document).ready(function() {
     Back To Top
     --------------------------*/
     $('#back-to-top').fadeOut();
-    $(window).on("scroll", function() {
+    $(window).on("scroll", function () {
         if ($(this).scrollTop() > 250) {
             $('#back-to-top').fadeIn(1400);
         } else {
@@ -63,7 +63,7 @@ $(document).ready(function() {
         }
     });
     // scroll body to 0px on click
-    $('#top').on('click', function() {
+    $('#top').on('click', function () {
         $('top').tooltip('hide');
         $('body,html').animate({
             scrollTop: 0
@@ -105,26 +105,26 @@ $(document).ready(function() {
             slidesToShow: 4,
             slidesToScroll: 1,
             responsive: [{
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: true
-                    }
-                }, {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1
-                    }
-                }, {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
                 }
+            }, {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            }, {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
 
             ]
         });
@@ -140,7 +140,7 @@ $(document).ready(function() {
             min: 10,
             max: 999,
             values: [200, 500],
-            slide: function(event, ui) {
+            slide: function (event, ui) {
                 $("#price").val("$" + ui.values[0] + " - $" + ui.values[1]);
             }
         });
@@ -154,7 +154,7 @@ $(document).ready(function() {
     /*------------------------
     Shopslider
     --------------------------*/
-    $('.indc .increment, .indc1 .increment, .indc2 .increment, .indc3 .increment, .indc4 .increment, .indc5 .increment').click(function(e) {
+    $('.indc .increment, .indc1 .increment, .indc2 .increment, .indc3 .increment, .indc4 .increment, .indc5 .increment').click(function (e) {
         e.preventDefault();
         var fieldName = $(this).attr('field');
         var currentVal = parseInt($(this).prev().val());
@@ -165,7 +165,7 @@ $(document).ready(function() {
         }
     });
 
-    $('.indc .decrement, .indc1 .decrement, .indc2 .decrement, .indc3 .decrement, .indc4 .decrement, .indc5 .decrement').click(function(e) {
+    $('.indc .decrement, .indc1 .decrement, .indc2 .decrement, .indc3 .decrement, .indc4 .decrement, .indc5 .decrement').click(function (e) {
         e.preventDefault();
         var fieldName = $(this).attr('field');
         var currentVal = parseInt($(this).next().val());
@@ -180,7 +180,7 @@ $(document).ready(function() {
     /*------------------------
     Cart Tooltip
     --------------------------*/
-    $("#cart").on("click", function() {
+    $("#cart").on("click", function () {
         $(".cart-box").fadeToggle("fast");
     });
 
@@ -214,14 +214,17 @@ $(document).ready(function() {
         }
 
         function initEvents() {
-            openCtrl.addEventListener('click', openSearch);
-            closeCtrl.addEventListener('click', closeSearch);
-            document.addEventListener('keyup', function(ev) {
-                // escape key.
-                if (ev.keyCode === 27) {
-                    closeSearch();
-                }
-            });
+            if (openCtrl) {
+                openCtrl.addEventListener('click', openSearch);
+                closeCtrl.addEventListener('click', closeSearch);
+                document.addEventListener('keyup', function (ev) {
+                    // escape key.
+                    if (ev.keyCode === 27) {
+                        closeSearch();
+                    }
+                });
+            }
+
         }
 
         function openSearch() {
@@ -239,7 +242,7 @@ $(document).ready(function() {
     }
 
     // search 2
-    $(".iq-search").on('click', function() {
+    $(".iq-search").on('click', function () {
         var checkId = document.getElementsByClassName("search-open");
         if (checkId.length > 0) {
             $('.iq-search').removeClass("search-open");
@@ -337,7 +340,7 @@ $(document).ready(function() {
     /*------------------------
     Sidebar Menu
     --------------------------*/
-    $(".sider-bt").on("click", function() {
+    $(".sider-bt").on("click", function () {
         $(".sider-bt").toggleClass("cross");
         $(".sidebar-menu").toggleClass("sidebar-open");
     });
@@ -348,7 +351,7 @@ $(document).ready(function() {
     --------------------------*/
     $('.iq-accordion .iq-ad-block .ad-details').hide();
     $('.iq-accordion .iq-ad-block:first').addClass('ad-active').children().slideDown('slow');
-    $('.iq-accordion .iq-ad-block').on("click", function() {
+    $('.iq-accordion .iq-ad-block').on("click", function () {
         if ($(this).children('div').is(':hidden')) {
             $('.iq-accordion .iq-ad-block').removeClass('ad-active').children('div').slideUp('slow');
             $(this).toggleClass('ad-active').children('div').slideDown('slow');
@@ -364,7 +367,7 @@ $(document).ready(function() {
     });
 
     // filter items on button click
-    $('.isotope-filters').on('click', 'button', function() {
+    $('.isotope-filters').on('click', 'button', function () {
         var filterValue = $(this).attr('data-filter');
         $('.isotope').isotope({
             resizable: true,
@@ -390,16 +393,16 @@ $(document).ready(function() {
             }
         });
         // bind filter button click
-        $filter.on('click', 'button', function() {
+        $filter.on('click', 'button', function () {
             var filterValue = $(this).attr('data-filter');
             $msnry.isotope({
                 filter: filterValue
             });
         });
 
-        $filter.each(function(i, buttonGroup) {
+        $filter.each(function (i, buttonGroup) {
             var $buttonGroup = $(buttonGroup);
-            $buttonGroup.on('click', 'button', function() {
+            $buttonGroup.on('click', 'button', function () {
                 $buttonGroup.find('.active').removeClass('active');
                 $(this).addClass('active');
             });
@@ -410,7 +413,7 @@ $(document).ready(function() {
     /*------------------------
     Portfolio move
     --------------------------*/
-    $('.iq-portfolio-05').each(function() {
+    $('.iq-portfolio-05').each(function () {
         $(this).hoverdir({});
     });
 
@@ -418,7 +421,7 @@ $(document).ready(function() {
     /*------------------------
     Progress Bar
     --------------------------*/
-    $('.progress-bar').each(function(i, e) {
+    $('.progress-bar').each(function (i, e) {
         var progress_data = $(this);
         var delay_data = progress_data.attr('data-delay') || "100";
         var type_data = progress_data.attr('data-type') || "%";
@@ -429,8 +432,8 @@ $(document).ready(function() {
             });
         }
 
-        $(e).show(function() {
-            setTimeout(function() {
+        $(e).show(function () {
+            setTimeout(function () {
                 progress_data.animate({
                     'width': percentage_data + '%'
                 }, 'easeInOutCirc').addClass('progress-animated');
@@ -506,7 +509,7 @@ $(document).ready(function() {
     /*------------------------
     widget
     --------------------------*/
-    $('.iq-widget-menu > ul > li > a').on('click', function() {
+    $('.iq-widget-menu > ul > li > a').on('click', function () {
         var checkElement = $(this).next();
         $('.iq-widget-menu li').removeClass('active');
         $(this).closest('li').addClass('active');
@@ -537,7 +540,7 @@ $(document).ready(function() {
     Typer
     --------------------------*/
     var win = $(window);
-        foo = $('#typer');
+    foo = $('#typer');
     foo.typer(['<h6 class="iq-tw-6"><span class="iq-font-green">Web</span> Developer</h6>', '<h6 class="iq-tw-6">Web <span class="iq-font-green">Designer</span></h6>', '<h6 class="iq-tw-6"><span class="iq-font-green">Frontend</span> Developer</h6>']);
 
 
@@ -557,7 +560,7 @@ $(document).ready(function() {
     /*------------------------
     Owl Carousel
     --------------------------*/
-    $('.owl-carousel').each(function() {
+    $('.owl-carousel').each(function () {
         var $carousel = $(this);
         $carousel.owlCarousel({
             items: $carousel.data("items"),
@@ -599,10 +602,10 @@ $(document).ready(function() {
     /*------------------------
     Contact from
     --------------------------*/
-    $('#contact').submit(function(e) {
+    $('#contact').submit(function (e) {
         var flag = 0;
         e.preventDefault(); // Prevent Default Submission
-        $('.require').each(function() {
+        $('.require').each(function () {
             if ($.trim($(this).val()) == '') {
                 $(this).css("border", "1px solid red");
                 e.preventDefault(); // Prevent Default Submission
@@ -623,15 +626,15 @@ $(document).ready(function() {
 
         if (flag == 0) {
             $.ajax({
-                    url: 'contact-form.php',
-                    type: 'POST',
-                    data: $("#contact").serialize() // it will serialize the form data
-                })
-                .done(function(data) {
+                url: 'contact-form.php',
+                type: 'POST',
+                data: $("#contact").serialize() // it will serialize the form data
+            })
+                .done(function (data) {
                     $("#result").html('Form was successfully submitted.');
                     $('#contact')[0].reset();
                 })
-                .fail(function() {
+                .fail(function () {
                     alert('Ajax Submit Failed ...');
                 });
         }
@@ -642,7 +645,7 @@ $(document).ready(function() {
     /*------------------------
     Subscription from
     --------------------------*/
-    $('#subscribe_btn').on('click', function(e) {
+    $('#subscribe_btn').on('click', function (e) {
         var flag = 0;
         e.preventDefault(); // Prevent Default Submission
         if ($('#subscribe_email').val() == '') {
@@ -655,15 +658,15 @@ $(document).ready(function() {
         }
         if (flag == 0) {
             $.ajax({
-                    url: 'php/subscribed-form.php',
-                    type: 'POST',
-                    data: $("#subscribe_form").serialize() // it will serialize the form data
-                })
-                .done(function(data) {
+                url: 'php/subscribed-form.php',
+                type: 'POST',
+                data: $("#subscribe_form").serialize() // it will serialize the form data
+            })
+                .done(function (data) {
                     $("#result").html('Form was successfully submitted.');
                     $('#subscribe_form')[0].reset();
                 })
-                .fail(function() {
+                .fail(function () {
                     alert('Ajax Submit Failed ...');
                 });
         }
