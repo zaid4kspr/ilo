@@ -63,7 +63,9 @@ Design and Developed by: iqonicthemes.in
 	.iq-counter3 .iq-counter .iq-lead { font-size: 14px; }
 	.iq-counter3 .iq-counter .left { margin-right: 20px !important; }
 	.light-tab .nav-pills .nav-link { font-size: 14px; padding: 10px 15px; }
-	.iq-feature6 .spacial-aria.light { padding: 50px 20px; }
+	.iq-feature6 .spacial-aria.light {  padding: 1px 40px;
+		padding-bottom: 30px;
+		height: 400px;}
 	.iq-tab6.horizontal .nav-item a { padding: 15px 5px !important; font-size: 14px; }
 	#corporate-1 .light-tab { margin-top: 0; padding-top: 0; }
 	#corporate-1 .device-aria { padding-bottom: 0; }
